@@ -22,7 +22,7 @@ public class Sprite extends RectF {
     }
 
     public Sprite(float left, float top, float right, float bottom) {
-        this(left, top, right, bottom,1,2, Color.MAGENTA);
+        this(left, top, right, bottom,1,2, Color.BLACK);
     }
 
     public Sprite(int dX, int dY, int color) {
@@ -42,11 +42,11 @@ public class Sprite extends RectF {
     {
         Paint paint = new Paint();
         paint.setColor(color);//sets its color
-        canvas.drawCircle(centerX(), centerY(), width() / 2, paint);//draws circle
+        canvas.drawCircle(centerX(), centerY(), width() , paint);//draws circle
         if(bitmap==null) {//if no bitmap exists draw a red circle
             //Paint paint = new Paint();
             paint.setColor(color);//sets its color
-            canvas.drawCircle(centerX(), centerY(), width() / 2, paint);//draws circle
+            canvas.drawCircle(centerX(), centerY(), width() *2, paint);//draws circle
         }else {
             iconWidth = bitmap.getWidth() / BMP_COLUMNS;//calculate width of 1 image
             iconHeight = bitmap.getHeight() / BMP_ROWS; //calculate height of 1 image
