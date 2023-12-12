@@ -1,6 +1,7 @@
 package com.example.myapplication9sprite;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -91,6 +92,13 @@ public class Sprite extends RectF {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+
+
+
+    public void intersects (Rect rect, Sprite sprite)
+    {
+
     }
 
 }
