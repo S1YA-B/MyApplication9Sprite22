@@ -19,11 +19,14 @@ public class  DrawView extends View {
     Paint block2 = new Paint();
     Paint block3 = new Paint();
     Paint block4 = new Paint();
+    int dX = 0;
+    int dY = 0;
+    int rectY = 2;
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        sprite = new Sprite(1,100,110,210,0,3,Color.BLACK);
+        sprite = new Sprite(1,100,110,210,dX,dY+3,Color.BLACK);
         sprite.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.spritexb_1344));
     }
 
@@ -40,10 +43,10 @@ public class  DrawView extends View {
         block2.setColor(Color.MAGENTA);
         block3.setColor(Color.BLUE);
         block4.setColor(Color.RED);
-        canvas.drawRect(.3f*getWidth(),0,.6f*getWidth(),.1f*getHeight(),block1);
-        canvas.drawRect(.7f*getWidth(),.2f*getHeight(),.9f*getWidth(),.4f*getHeight(),block2);
-        canvas.drawRect(.4f*getWidth(),.6f*getHeight(),.5f*getWidth(),.8f*getHeight(),block3);
-        canvas.drawRect(.8f*getWidth(),.8f*getHeight(),1*getWidth(),.95f*getHeight(),block4);
+        canvas.drawRect(.3f*getWidth(),0+rectY,.6f*getWidth(),.1f*getHeight()+rectY,block1);
+        canvas.drawRect(.7f*getWidth(),.2f*getHeight()-rectY,.9f*getWidth(),.4f*getHeight()-rectY,block2);
+        canvas.drawRect(.4f*getWidth(),.6f*getHeight()+rectY,.5f*getWidth(),.8f*getHeight()+rectY,block3);
+        canvas.drawRect(.8f*getWidth(),.8f*getHeight()-rectY,1*getWidth(),.95f*getHeight()-rectY,block4);
 
 
 
@@ -57,7 +60,7 @@ public class  DrawView extends View {
         if(event.getAction()==MotionEvent.ACTION_DOWN){
             if(sprite.contains(event.getX(),event.getY())){
                 dX = 3;
-
+                dY = 0;
                 sprite.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.spritexb_1344));
             }
         }
@@ -65,13 +68,12 @@ public class  DrawView extends View {
         return true;
     }
 
-    public void onClick ()
+public boolean intersectsRectCirc (Sprite circle, Rect rect)
     {
-
-
-
+        DeltaX = CircleX - Max(RectX, Min(CircleX, RectX + RectWidth));
+        DeltaY = CircleY - Max(RectY, Min(CircleY, RectY + RectHeight));
+        return (DeltaX * DeltaX + DeltaY * DeltaY) < (CircleRadius * CircleRadius);
     }
-
 
 
 }
